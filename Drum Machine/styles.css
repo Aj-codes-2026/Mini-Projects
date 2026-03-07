@@ -1,0 +1,74 @@
+:root {
+  --border: 2px solid;
+  --radius: 5px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#drum-machine {
+  border: var(--border);
+  width: 18rem;
+  height: 23rem;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: var(--radius);
+}
+
+#display {
+  width: 100%;
+  text-align: center;
+  border: var(--border);
+  border-radius: var(--radius);
+  height: 40px;
+  margin: 5px auto 30px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+#pad-bank {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  place-items: center;
+}
+
+.drum-pad {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border: var(--border);
+  border-radius: var(--radius);
+  margin: 0;
+  cursor: pointer;
+  position: relative;
+  font-size: 20px;
+}
+
+.clip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0;
+}
+
+@media (max-width: 480px) {
+  #drum-machine {
+    width: 15rem;
+    height: 19rem;
+  }
+}

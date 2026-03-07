@@ -1,0 +1,380 @@
+/*<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="container1" id="container1">
+      <h2>Weather App</h2>
+      <div class="input-group">
+        <select id="option">
+          <option value="" disabled selected>Select a city</option>
+          <option value="new york">New York, USA</option>
+          <option value="los angeles">Los Angeles, USA</option>
+          <option value="chicago">Chicago, USA</option>
+          <option value="tokyo">Tokyo, Japan</option>
+          <option value="london">London, UK</option>
+          <option value="lagos">Lagos, Nigeria</option>
+          <option value="paris">Paris, France</option>
+          <option value="sydney">Sydney, Australia</option>
+        </select>
+        <button type="button" id="get-weather-btn">Get Weather</button>
+      </div>
+      <div class="loading" id="loading">Loading weather data...</div>
+      <p id="error">⚠️ Please select a city.</p>
+    </div>
+    
+    <div class="container2" id="container2">
+      <button class="back-btn" id="back-btn">← Back</button>
+      <h2>Weather App</h2>
+      <h1 id="location"></h1>
+      <p id="country"></p>
+      <div class="img-container">
+        <img src="" alt="weather icon" id="weather-icon" />
+      </div>
+      <p id="main-temperature"></p>
+      <p id="feels-like"></p>
+      <div class="weather-grid">
+        <div class="weather-card">
+          <span class="color">Humidity:</span>
+          <span id="humidity" class="value"></span>
+        </div>
+        <div class="weather-card">
+          <span class="color">Cloud Cover:</span>
+          <span id="cloud" class="value"></span>
+        </div>
+        <div class="weather-card">
+          <span class="color">Wind:</span>
+          <span id="wind" class="value"></span>
+        </div>
+        <div class="weather-card">
+          <span class="color">Gusts:</span>
+          <span id="wind-gust" class="value"></span>
+        </div>
+        <div class="weather-card">
+          <span class="color">Pressure:</span>
+          <span id="pressure" class="value"></span>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
+*/
+:root {
+  --color1: rgba(225, 255, 255, 0.7);
+  --bg-primary: #0b121e;
+  --bg-secondary: #202b3b;
+  --accent: #4a90e2;
+  --error: #ff6b6b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+}
+
+.container1, .container2 {
+  width: 100%;
+  max-width: 500px;
+  background-color: var(--bg-primary);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  letter-spacing: 0.5px;
+  padding: 30px 25px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.container1:hover, .container2:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+}
+
+.container2 {
+  display: none;
+}
+
+h2 {
+  font-size: 24px;
+  color: var(--color1);
+  margin-bottom: 25px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+select, #get-weather-btn {
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+select {
+  flex: 2;
+  padding: 12px 15px;
+  background-color: var(--bg-secondary);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+select:hover {
+  background-color: #2a3648;
+}
+
+select option {
+  background-color: var(--bg-primary);
+  color: white;
+}
+
+#get-weather-btn {
+  flex: 1;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#get-weather-btn:hover {
+  background: linear-gradient(135deg, #357abd, #2a5f8a);
+  transform: scale(1.02);
+}
+
+#get-weather-btn:active {
+  transform: scale(0.98);
+}
+
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 8px 15px;
+  background-color: transparent;
+  color: var(--color1);
+  border: 1px solid var(--color1);
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: var(--color1);
+  color: var(--bg-primary);
+}
+
+.loading {
+  color: var(--accent);
+  margin: 15px 0;
+  font-style: italic;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+#error {
+  margin-top: 15px;
+  margin-bottom: 0;
+  display: none;
+  color: var(--error);
+  background-color: rgba(255, 107, 107, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  border: 1px solid var(--error);
+}
+
+h1 {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-size: clamp(24px, 5vw, 32px);
+  color: white;
+}
+
+#country {
+  color: var(--color1);
+  margin-top: 0;
+  font-size: clamp(16px, 4vw, 20px);
+  margin-bottom: 15px;
+}
+
+.img-container {
+  width: 120px;
+  height: 120px;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-secondary);
+  border-radius: 50%;
+  border: 3px solid var(--color1);
+}
+
+#weather-icon {
+  font-size: 60px;
+  line-height: 1;
+}
+
+#main-temperature {
+  font-weight: 700;
+  font-size: clamp(32px, 6vw, 42px);
+  margin: 10px 0 5px;
+  color: white;
+}
+
+#feels-like {
+  color: var(--color1);
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.weather-card {
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 15px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.weather-card:hover {
+  transform: translateY(-3px);
+  background-color: #2a3648;
+}
+
+.color {
+  color: var(--color1);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.value {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+  
+  .container1, .container2 {
+    padding: 20px 15px;
+  }
+  
+  .input-group {
+    flex-direction: column;
+  }
+  
+  select, #get-weather-btn {
+    width: 100%;
+  }
+  
+  .weather-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  
+  .weather-card {
+    padding: 12px 8px;
+  }
+  
+  h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .back-btn {
+    top: 10px;
+    left: 10px;
+    padding: 5px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 350px) {
+  .weather-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .img-container {
+    width: 100px;
+    height: 100px;
+  }
+  
+  #weather-icon {
+    font-size: 50px;
+  }
+}
+
+/* Landscape mode */
+@media (max-height: 600px) and (orientation: landscape) {
+  body {
+    padding: 15px;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+  
+  .container1, .container2 {
+    margin: 20px auto;
+  }
+}
+
+/* Accessibility - Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .container1, .container2,
+  #get-weather-btn, .weather-card,
+  .back-btn {
+    transition: none;
+    transform: none;
+    animation: none;
+  }
+}
+

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Quote Generator</title>
+  </head>
+  <body>
+    <h1>Random Quote Generator</h1>
+    <div class="container" role="main">
+      <div class="quote-container">
+        <p class="quote-author" id="quote-author">
+          <span>Author: </span>
+          <span id="author-text" class="author-text"></span>
+        </p>
+        <p class="quote-text" id="quote-text">
+          <span>Quote: </span>
+          <span id="content-text" class="content-text"></span>
+        </p>
+      </div>
+      <div class="loading" id="loading" aria-live="polite">Loading...</div>
+      <div class="error" id="error" role="alert">Error fetching quote</div>
+      <div class="btn-container">
+        <button type="button" id="new-quote" aria-label="Generate new quote">
+          Change Quote
+        </button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

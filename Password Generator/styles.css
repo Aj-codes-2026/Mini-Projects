@@ -1,0 +1,145 @@
+:root{
+    --color: #B0F5B9
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: rgba(240, 248, 255, 0.854);
+    font-family: sans-serif;
+}
+
+.password-container{
+    border: 1px solid white;
+    box-shadow: 0 4px 8px rgb(255, 255, 255, .3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px 20px 20px 20px;
+}
+
+h1{
+    font-size: 20px
+}
+
+.password{
+    background-color: #24232A;
+    padding: 10px ;
+    margin-bottom: 10px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#password{
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.password-code{
+    background-color: #24232A;
+    padding: 10px ;
+}
+
+.length-label{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#range-value{
+    font-size: 22px;
+    color: var(--color);
+}
+
+#length{
+    margin-top: 8px;
+}
+
+.length-div{
+    display: flex;
+    flex-direction: column;
+}
+
+.password-container div{
+    width: 100%;
+}
+
+.checkboxes{
+    margin-top: 25px;
+}
+
+.input-div{
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+}
+
+input[type="checkbox"]{
+    appearance: none;
+    width: 18px;
+    aspect-ratio: 1/1;
+    background-color: white;
+    border: 1px solid var(--color);
+    margin: 0 5px 0 0;
+    border-radius: 3.5px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+
+input[type="checkbox"]::before{
+    content: "\2713";
+    position: absolute;
+    font-size: 18px;
+    line-height: 19px;
+    color: black;
+    transform: scale(0);
+    transition: all .1s ease-in-out;
+    font-weight: bold;
+}
+
+input[type="checkbox"]:checked{
+    background-color: var(--color);
+}
+
+input[type="checkbox"]:checked::before{
+    transform: scale(1);
+}
+
+#generate-btn{
+    width: 100%;
+    height: 40px;
+    margin: 15px auto 8px auto;
+    background-color: var(--color);
+    font-size: 15px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    
+}
+
+#strength{
+    background-color: black;
+    margin: 20px auto 8px auto;
+    padding: 10px 5px 10px 5px;
+    text-align: center;
+    font-size: 20px;
+}
+
+#copy{
+    background-color: var(--color);
+    border: none;
+    cursor: pointer;
+}
