@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  transition: background-color 0.2s ease;
+}
+
+.btn {
+  margin: 30px auto;
+  padding: 8px 13px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.797);
+  color: black;
+  border: none;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+#text {
+  text-align: center;
+  letter-spacing: 1px;
+  color: white;
+}
+
+@media (max-width: 480px) {
+  .container{
+    padding: 1.5rem;
+  }
+  h1{
+    font-size: 1.5rem;
+  }
+  .btn{
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    min-width: 160px;
+  }
+  #text{
+    font-size: 1.2rem;
+  }
+}
