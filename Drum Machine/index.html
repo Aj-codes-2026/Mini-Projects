@@ -1,35 +1,152 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Drum Machine</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="drum-machine">
-        <p id="display"></p>
-        <div id="pad-bank">
-            <button onclick="playSound(this)" type="button" class="drum-pad" id="heater1">
-                <audio preload="auto" controls src="https://cdn.freecodecamp.org/curriculum/drum/Heater-1.mp3" class="clip" id="Q"></audio>Q</button>
-            <button onclick="playSound(this)" type="button" class="drum-pad" id="heater2">
-                <audio preload="auto" controls src="https://cdn.freecodecamp.org/curriculum/drum/Heater-2.mp3" class="clip" id="W"></audio>W</button>
-            <button onclick="playSound(this)" type="button" class="drum-pad" id="heater3">
-                <audio preload="auto" controls src="https://cdn.freecodecamp.org/curriculum/drum/Heater-3.mp3" class="clip" id="E"></audio>E</button>
-            <button onclick="playSound(this)" type="button" class="drum-pad" id="heater4">
-                <audio preload="auto" controls src="https://cdn.freecodecamp.org/curriculum/drum/Heater-4_1.mp3" class="clip" id="A"></audio>A</button>
-            <button onclick="playSound(this)" type="button" class="drum-pad" id="clap">
-                <audio preload="auto" controls src="https://cdn.freecodecamp.org/curriculum/drum/Heater-6.mp3" class="clip" id="S"></audio>S</button>
-            <button onclick="playSound(this)" type="button" class="drum-pad" id="open-hh">
-                <audio preload="auto" controls src="https://cdn.freecodecamp.org/curriculum/drum/Dsc_Oh.mp3" class="clip" id="D"></audio>D</button>
-            <button onclick="playSound(this)" type="button" class="drum-pad" id="kick-n-hat">
-                <audio preload="auto" controls src="https://cdn.freecodecamp.org/curriculum/drum/Kick_n_Hat.mp3" class="clip" id="Z"></audio>Z</button>
-            <button onclick="playSound(this)" type="button" class="drum-pad" id="kick">
-                <audio preload="auto" controls src="https://cdn.freecodecamp.org/curriculum/drum/RP4_KICK_1.mp3" class="clip" id="X"></audio>X</button>
-            <button onclick="playSound(this)" type="button" class="drum-pad" id="closed-hh">
-                <audio preload="auto" controls src="https://cdn.freecodecamp.org/curriculum/drum/Cev_H2.mp3" class="clip" id="C"></audio>C</button>
-        </div>
+      <p id="display"></p>
+      <div id="pad-bank">
+        <button
+          onclick="playSound(this)"
+          type="button"
+          class="drum-pad"
+          id="heater1"
+        >
+          <audio
+            preload="auto"
+            controls
+            src="https://cdn.freecodecamp.org/curriculum/drum/Heater-1.mp3"
+            class="clip"
+            id="Q"
+          ></audio
+          >Q
+        </button>
+        <button
+          onclick="playSound(this)"
+          type="button"
+          class="drum-pad"
+          id="heater2"
+        >
+          <audio
+            preload="auto"
+            controls
+            src="https://cdn.freecodecamp.org/curriculum/drum/Heater-2.mp3"
+            class="clip"
+            id="W"
+          ></audio
+          >W
+        </button>
+        <button
+          onclick="playSound(this)"
+          type="button"
+          class="drum-pad"
+          id="heater3"
+        >
+          <audio
+            preload="auto"
+            controls
+            src="https://cdn.freecodecamp.org/curriculum/drum/Heater-3.mp3"
+            class="clip"
+            id="E"
+          ></audio
+          >E
+        </button>
+        <button
+          onclick="playSound(this)"
+          type="button"
+          class="drum-pad"
+          id="heater4"
+        >
+          <audio
+            preload="auto"
+            controls
+            src="https://cdn.freecodecamp.org/curriculum/drum/Heater-4_1.mp3"
+            class="clip"
+            id="A"
+          ></audio
+          >A
+        </button>
+        <button
+          onclick="playSound(this)"
+          type="button"
+          class="drum-pad"
+          id="clap"
+        >
+          <audio
+            preload="auto"
+            controls
+            src="https://cdn.freecodecamp.org/curriculum/drum/Heater-6.mp3"
+            class="clip"
+            id="S"
+          ></audio
+          >S
+        </button>
+        <button
+          onclick="playSound(this)"
+          type="button"
+          class="drum-pad"
+          id="open-hh"
+        >
+          <audio
+            preload="auto"
+            controls
+            src="https://cdn.freecodecamp.org/curriculum/drum/Dsc_Oh.mp3"
+            class="clip"
+            id="D"
+          ></audio
+          >D
+        </button>
+        <button
+          onclick="playSound(this)"
+          type="button"
+          class="drum-pad"
+          id="kick-n-hat"
+        >
+          <audio
+            preload="auto"
+            controls
+            src="https://cdn.freecodecamp.org/curriculum/drum/Kick_n_Hat.mp3"
+            class="clip"
+            id="Z"
+          ></audio
+          >Z
+        </button>
+        <button
+          onclick="playSound(this)"
+          type="button"
+          class="drum-pad"
+          id="kick"
+        >
+          <audio
+            preload="auto"
+            controls
+            src="https://cdn.freecodecamp.org/curriculum/drum/RP4_KICK_1.mp3"
+            class="clip"
+            id="X"
+          ></audio
+          >X
+        </button>
+        <button
+          onclick="playSound(this)"
+          type="button"
+          class="drum-pad"
+          id="closed-hh"
+        >
+          <audio
+            preload="auto"
+            controls
+            src="https://cdn.freecodecamp.org/curriculum/drum/Cev_H2.mp3"
+            class="clip"
+            id="C"
+          ></audio
+          >C
+        </button>
+      </div>
     </div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
