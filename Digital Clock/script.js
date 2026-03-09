@@ -20,7 +20,7 @@ const updateTime = () => {
   let getDate = date.getDate();
 
   if (getHour === 0) {
-    getHour = 12;
+    getHour = 0;
     tod.innerText = "AM";
   } else if (getHour === 12) {
     tod.innerText = "PM";
@@ -45,26 +45,9 @@ const updateTime = () => {
   year.innerText = getYear;
   dateNum.innerText = getDate;
 
-  if (getHour >= 5 && getHour < 12) {
-    period.innerText = "Morning";
-  } else if (getHour >= 12 && getHour < 17) {
-    period.innerText = "Afternoon";
-  } else if (getHour >= 17 && getHour < 21) {
-    period.innerText = "Evening";
-  } else {
-    period.innerText = "Night";
-  }
-
   setTimeout(() => {
     updateTime();
   }, 1000);
 };
-
-const show = () => {
-  const date = new Date();
-  let get = date.getDate();
-  return get;
-};
-console.log(show());
 
 updateTime();

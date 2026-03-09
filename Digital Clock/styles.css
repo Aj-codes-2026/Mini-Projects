@@ -41,12 +41,6 @@ body {
   text-transform: uppercase;
 }
 
-#period {
-  font-size: 12px;
-  margin-top: -10px;
-  font-style: italic;
-}
-
 .time-container span:not(#am-pm) {
   font-size: 40px;
 }
